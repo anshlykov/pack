@@ -17,9 +17,11 @@ func ListBuildpackRegistries(logger logging.Logger, cfg config.Config) *cobra.Co
 		Args:  cobra.NoArgs,
 		Short: "Lists all buildpack registries",
 		RunE: logError(logger, func(cmd *cobra.Command, args []string) error {
+			if len(cfg.Registries) == 0 {
+				logger.Info(fmtRegistry(config.DefaultRegistry(), true, logger.IsVerbose()))
+			}
 			for _, registry := range cfg.Registries {
-				registryFmt := fmtRegistry(registry, registry.Name == cfg.DefaultRegistryName, logger.IsVerbose())
-				logger.Info(registryFmt)
+				logger.Info(fmtRegistry(registry, registry.Name == cfg.DefaultRegistryName, logger.IsVerbose()))
 			}
 			logging.Tip(logger, "Run %s to add additional registries", style.Symbol("pack add-buildpack-registry"))
 

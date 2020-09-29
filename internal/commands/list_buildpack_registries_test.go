@@ -76,11 +76,21 @@ func testListBuildpackRegistriesCommand(t *testing.T, when spec.G, it spec.S) {
 			h.AssertContains(t, outBuf.String(), "public registry")
 			h.AssertContains(t, outBuf.String(), "https://github.com/buildpacks/public-registry")
 
-			h.AssertContains(t, outBuf.String(), "private registry")
+			h.AssertContains(t, outBuf.String(), "* private registry")
 			h.AssertContains(t, outBuf.String(), "https://github.com/buildpacks/private-registry")
 
 			h.AssertContains(t, outBuf.String(), "personal registry")
 			h.AssertContains(t, outBuf.String(), "https://github.com/buildpacks/personal-registry")
+		})
+
+		it("should ALWAYS list an official default registry", func() {
+			logger := ilogging.NewLogWithWriters(&outBuf, &outBuf, ilogging.WithVerbose())
+			command = commands.ListBuildpackRegistries(logger, config.Config{})
+
+			h.AssertNil(t, command.Execute())
+
+			h.AssertContains(t, outBuf.String(), "* official")
+			h.AssertContains(t, outBuf.String(), "https://github.com/buildpacks/registry-index")
 		})
 	})
 }

@@ -36,6 +36,14 @@ type TrustedBuilder struct {
 	Name string `toml:"name"`
 }
 
+func DefaultRegistry() Registry {
+	return Registry{
+		"official",
+		"github",
+		"https://github.com/buildpacks/registry-index",
+	}
+}
+
 func DefaultConfigPath() (string, error) {
 	home, err := PackHome()
 	if err != nil {
@@ -107,9 +115,5 @@ func GetRegistry(cfg Config, registryName string) (Registry, error) {
 		return Registry{}, errors.Errorf("registry %s is not defined in your config file", style.Symbol(registryName))
 	}
 
-	return Registry{
-		"official",
-		"github",
-		"https://github.com/buildpacks/registry-index",
-	}, nil
+	return DefaultRegistry(), nil
 }
