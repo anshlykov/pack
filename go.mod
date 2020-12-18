@@ -5,8 +5,8 @@ require (
 	github.com/Masterminds/semver v1.5.0
 	github.com/Microsoft/hcsshim v0.8.10 // indirect
 	github.com/apex/log v1.9.0
-	github.com/buildpacks/imgutil v0.0.0-20201022190551-6525b8cdcdd0
-	github.com/buildpacks/lifecycle v0.9.3
+	github.com/buildpacks/imgutil v0.0.0-20201211223552-8581300fe2b2
+	github.com/buildpacks/lifecycle v0.10.1
 	github.com/containerd/containerd v1.4.1 // indirect
 	github.com/containerd/continuity v0.0.0-20200107194136-26c1120b8d41 // indirect
 	github.com/docker/docker v1.4.2-0.20200221181110-62bd5a33f707
@@ -14,8 +14,8 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/golang/mock v1.4.4
 	github.com/golang/protobuf v1.4.3 // indirect
-	github.com/google/go-cmp v0.5.2
-	github.com/google/go-containerregistry v0.1.4
+	github.com/google/go-cmp v0.5.4
+	github.com/google/go-containerregistry v0.2.1
 	github.com/google/go-github/v30 v30.1.0
 	github.com/heroku/color v0.0.6
 	github.com/mattn/go-colorable v0.1.8 // indirect
